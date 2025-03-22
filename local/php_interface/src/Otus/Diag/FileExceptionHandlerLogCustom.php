@@ -7,6 +7,7 @@ use Psr\Log;
 /**
  *
  */
+
 class FileExceptionHandlerLogCustom extends \Bitrix\Main\Diag\FileExceptionHandlerLog
 {
     private $level;
@@ -15,6 +16,11 @@ class FileExceptionHandlerLogCustom extends \Bitrix\Main\Diag\FileExceptionHandl
         echo 'Hello World!';
     }
 
+    /**
+     * @param $exception
+     * @param $logType
+     * @return void
+     */
     public function write($exception, $logType)
     {
         $text = ExceptionHandlerFormatter::format($exception, false, $this->level);
