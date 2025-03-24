@@ -9,7 +9,8 @@ spl_autoload_register(function ($class) {
 
     $class = str_replace('\\', '/', $class);
 
-    $path = __DIR__ . "/" . $class . "php";
+    $path = __DIR__ . "/" . $class . ".php";
+   // echo($path);
 
     if (is_file($path)) {
         require_once $path;
