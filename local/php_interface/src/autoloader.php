@@ -3,7 +3,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 spl_autoload_register(function ($class) {
-    if (!str_contains($class, 'Otus')) {
+    if (!str_contains($class, 'Otus')) {// если только из этой папки
         return;
     }
 
