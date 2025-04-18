@@ -1,50 +1,39 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
+use Otus\Books\PublisherTable as Publisher;
+
+
+
 Bitrix\Main\Page\Asset::getInstance()->addCss('/doctors/styles.css');
 
-$arClients = \Otus\Hospital\HospitalClientsTable:: getList([
+
+
+$arBooks = \Otus\Books\BooksTable:: getList([
     'select' => [
-        'id',
-        'client_first_name'=>'first_name',
-        'client_last_name'=>'last_name',
-        'contact_full_name' => 'CONTACT.*',
-        'contact_POST' => 'CONTACT.POST',
-        'attending_doctor_last_name' => 'DOCTOR.NAME',
-        'attending_doctor_id' => 'DOCTOR.ID',
-        'attending_doctor' => 'DOCTOR.*',
-        'attending_doctor_first_name' => 'DOCTOR.FIRST_NAME.VALUE',
-        'attending_doctor_PROCEDURES' => 'DOCTOR.PROCEDURES.ELEMENT.NAME',
+        '*',
+        //'PUBLISHERS'
     ],
 
 ])->fetchAll();
 
-/*$obClients = \Otus\Hospital\HospitalClientsTable:: getList([
-    'select' => [
-        'id',
-        'client_first_name'=>'first_name',
-        'client_last_name'=>'last_name',
-        'contact_full_name' => 'CONTACT.FULL_NAME',
-        'contact_POST' => 'CONTACT.POST',
-        'attending_doctor_last_name' => 'DOCTOR.NAME',
-        'attending_doctor_id' => 'DOCTOR.ID',
-        'attending_doctor_first_name' => 'DOCTOR.FIRST_NAME.VALUE',
-        'attending_doctor_PROCEDURES' => 'DOCTOR.PROCEDURES.ELEMENT.NAME',
-    ],
+pretty_print($arBooks);
 
-])->fetch();*/
-//while ()
-foreach ($arClients as $i => $client) {
-    $arClients1[$client['id']]['client_first_name'] = $client['client_first_name'];
-    $arClients1[$client['id']]['client_last_name'] = $client['client_last_name'];
-    $arClients1[$client['id']]['attending_doctor_last_name'] = $client['attending_doctorNAME'];
-    $arClients1[$client['id']]['attending_doctor_first_name'] = $client['attending_doctor_first_name'];
-    $arClients1[$client['id']]['attending_doctor_PROCEDURES'][] = $client['attending_doctor_PROCEDURES'];
-
+foreach ($arBooks as $book) {
+    // pretty_print((array)$book['publish_date']-> getTimestamp());
+    // pretty_print((array)$book['publish_date']-> format('d.m.Y'));
 }
 
-pretty_print($arClients);
-pretty_print($arClients1);
+/*$book = Otus\Books\BooksTable::getByPrimary(2, [
+    'select' => [
+        '*',
+        'PUBLISHERS'
+    ]
+])->fetchAll();*/
+/*foreach ($book->getPublisher() as $publisher) {
+    echo $publisher->getName() . '<br/>';
+}*/
+//pretty_print($book);
 
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
