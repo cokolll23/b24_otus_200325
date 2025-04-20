@@ -2,7 +2,7 @@
 
 namespace Otus\Diag;
 
-use Bitrix\Main;
+use Bitrix\Main\Diag\ExceptionHandlerFormatter;
 use Psr\Log;
 /**
  *
@@ -10,12 +10,6 @@ use Psr\Log;
 
 class FileExceptionHandlerLogCustom extends \Bitrix\Main\Diag\FileExceptionHandlerLog
 {
-    private $level;
-    public static function print()
-    {
-        echo 'Hello World!';
-    }
-
     /**
      * @param $exception
      * @param $logType
