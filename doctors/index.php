@@ -1,6 +1,5 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-
 Bitrix\Main\Page\Asset::getInstance()->addCss('/doctors/styles.css');
 
 if (!$_GET['id']) {
