@@ -16,7 +16,8 @@ if (!$_GET['id']) {
             'NAME',
             'FIRST_NAME_' => 'FIRST_NAME',
             'MIDDLE_NAME_' => 'MIDDLE_NAME',
-            'PROCEDURE_NAME' => 'PROCEDURES.ELEMENT.NAME'
+            'PROCEDURE_NAME' => 'PROCEDURES.ELEMENT.NAME',
+            //'PROCEDURE_'=>'PROCEDURES.ELEMENT',// вывод всех полей свойства
         ],
         'filter' => [// 'ID' => $doctorId
         ]
@@ -38,10 +39,10 @@ if (!$_GET['id']) {
             </a>
         <?php } ?>
     </div>
-<?php } else {?>
-<a href="/doctors">К списку врачей</a>
+<?php } else {
 
-   <?php $doctorId = $_GET['id'];
+
+    $doctorId = $_GET['id'];
 
     $doctors = \Bitrix\Iblock\Elements\ElementDoctorsTable::getList([ //быстрая выборка ORM getList необходимо обозначить Символьный код и Символьный код API здесь doctors
         'select' => [
@@ -66,14 +67,9 @@ if (!$_GET['id']) {
 
 
     $APPLICATION->SetPageProperty("title", $fio);
-    $APPLICATION->SetTitle($fio); ?>
-    <div class="doc-container">
-    <h2>
-        <?= $fio; ?>
-    </h2>
-    <h3>
-    Процедуры :
-    </h3>
+    $APPLICATION->SetTitle($fio);
+    echo $fio
+    ?>
     <ul>
         <?php foreach ($arDoctors[$doctorId]['DOCTOR_PROCEDERES_NAME'] as $DOCTOR_PROCEDERE_NAME): ?>
             <li><?= $DOCTOR_PROCEDERE_NAME ?></li>
@@ -81,5 +77,4 @@ if (!$_GET['id']) {
     </ul>
 <?php }
 ?>
-    </div>
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

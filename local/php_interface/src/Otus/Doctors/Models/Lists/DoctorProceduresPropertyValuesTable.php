@@ -1,10 +1,10 @@
 <?php
 
-namespace  Otus\Doctors\Models\Lists;
+namespace Otus\Doctors\Models\Lists;
 
 use Otus\Doctors\Models\AbstractIblockPropertyValuesTable;
 
-class DoctorsProceduresPropertyValuesTable extends AbstractIblockPropertyValuesTable
+class DoctorProceduresPropertyValuesTable extends AbstractIblockPropertyValuesTable
 {
     const IBLOCK_ID = 17;
 }
