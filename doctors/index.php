@@ -11,7 +11,6 @@ if (!$_GET['id']) {
     $APPLICATION->SetPageProperty("title", "Врачи");
     $APPLICATION->SetTitle("Врачи");
 
-
     $doctors = DoctorsPropertyValuesTable::getList([
         'select' => [
             'IBLOCK_ID' => 'ELEMENT.IBLOCK_ID',

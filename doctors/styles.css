@@ -78,7 +78,6 @@ section.doctors {
     border: 1px solid #D2CBBD;
     border-radius: 6px;
 }
-
 .add-buttons button:hover {
     filter: drop-shadow(6px 6px 3px #4444dd);
 
